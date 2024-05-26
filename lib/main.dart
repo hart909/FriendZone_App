@@ -5,6 +5,7 @@ import 'package:friendszone_app/responsive/mobile_screen_layout.dart';
 import 'package:friendszone_app/responsive/responsive_layout_screen.dart';
 import 'package:friendszone_app/responsive/web_screen_layout.dart';
 import 'package:friendszone_app/screens/login_screen.dart';
+import 'package:friendszone_app/screens/signup_screen.dart';
 import 'package:friendszone_app/utils/colors.dart';
 
 void main() async {
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
       //   mobileScreenLayout: MobileScreenLayout(),
       //   webScreenLayout: WebScreenLayout(),
       // ),
-      home: LoginScreen(),
+      home: SignupScreen(),
     );
   }
 }

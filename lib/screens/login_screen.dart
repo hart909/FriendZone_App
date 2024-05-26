@@ -34,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
           Flexible(child: Container(), flex: 2),
           SvgPicture.asset(
-            'assets/Text_logo.svg', 
+            'assets/Text_Logo.svg', 
             color: primaryColor,
              height: 64),
              const SizedBox(height: 64),
@@ -48,17 +48,19 @@ class _LoginScreenState extends State<LoginScreen> {
              isPass: true,
              ),
              const SizedBox(height: 22),
-             Container(
-              child: const Text('Log in'),
-              width: double.infinity,
-              alignment: Alignment.center,
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              decoration: const ShapeDecoration(shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(4),
-                )
-              ),
-              color: blueColor
-              ),
+             InkWell(
+               child: Container(
+                child: const Text('Log in'),
+                width: double.infinity,
+                alignment: Alignment.center,
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                decoration: const ShapeDecoration(shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(4),
+                  )
+                ),
+                color: blueColor
+                ),
+               ),
              ),
              SizedBox(height: 12),
             Flexible(child: Container(), flex: 2),
@@ -71,12 +73,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     vertical: 8
                   ),
                 ),
-                Container(
-                  child: Text(" Sign up", style: TextStyle(
-                    fontWeight: FontWeight.bold
-                  ),),
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 8
+                GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                    child: Text(" Sign up", style: TextStyle(
+                      fontWeight: FontWeight.bold
+                    ),),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 8
+                    ),
                   ),
                 )
               ],
