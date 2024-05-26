@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:friendszone_app/resources/auth_methods.dart';
 import 'package:friendszone_app/utils/colors.dart';
+import 'package:friendszone_app/utils/utils.dart';
 import 'package:friendszone_app/widgets/text_field_input.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -11,17 +13,38 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  bool _isLoading = false;
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
-    emailController.dispose();
-    passwordController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
 
   }
+
+  void loginUser() async{
+    setState(() {
+      _isLoading = true;
+    });
+    String res = await AuthMethods().loginUser(
+      email: _emailController.text, 
+      password: _passwordController.text);
+
+      if(res == "success"){
+    
+      } else{
+        
+        showSnackBar(res, context);
+      }
+      setState(() {
+      _isLoading = false;
+    });
+       
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,31 +57,34 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
           Flexible(child: Container(), flex: 2),
           SvgPicture.asset(
-            'assets/Text_logo.svg', 
+            'assets/Text_Logo.svg', 
             color: primaryColor,
              height: 64),
              const SizedBox(height: 64),
              TextFieldInput(hintText: 'Enter your email', textInputType: 
              TextInputType.emailAddress, 
-             textEditingController: emailController,),
+             textEditingController: _emailController,),
              const SizedBox(height: 22),
              TextFieldInput(hintText: 'Enter your Password', textInputType: 
              TextInputType.text, 
-             textEditingController: passwordController,
+             textEditingController: _passwordController,
              isPass: true,
              ),
              const SizedBox(height: 22),
-             Container(
-              child: const Text('Log in'),
-              width: double.infinity,
-              alignment: Alignment.center,
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              decoration: const ShapeDecoration(shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(4),
-                )
-              ),
-              color: blueColor
-              ),
+             InkWell(
+              onTap: loginUser,
+               child: Container(
+                child: _isLoading ? const Center(child: CircularProgressIndicator(),) : const Text('Log in'),
+                width: double.infinity,
+                alignment: Alignment.center,
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                decoration: const ShapeDecoration(shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(4),
+                  )
+                ),
+                color: blueColor
+                ),
+               ),
              ),
              SizedBox(height: 12),
             Flexible(child: Container(), flex: 2),
@@ -71,12 +97,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     vertical: 8
                   ),
                 ),
-                Container(
-                  child: Text(" Sign up", style: TextStyle(
-                    fontWeight: FontWeight.bold
-                  ),),
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 8
+                GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                    child: Text(" Sign up", style: TextStyle(
+                      fontWeight: FontWeight.bold
+                    ),),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 8
+                    ),
                   ),
                 )
               ],
