@@ -18,20 +18,20 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController bioController = TextEditingController();
-  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _bioController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
   Uint8List? _image;
   bool _isLoading = false;
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
-    emailController.dispose();
-    passwordController.dispose();
-    bioController.dispose();
-    usernameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    _bioController.dispose();
+    _usernameController.dispose();
   }
 
   void selectImage() async {
@@ -46,10 +46,10 @@ class _SignupScreenState extends State<SignupScreen> {
       _isLoading = true;
     });
     String res = await AuthMethods().signUpUser(
-      email: emailController.text,
-      password: passwordController.text,
-      username: usernameController.text,
-      bio: bioController.text,
+      email: _emailController.text,
+      password: _passwordController.text,
+      username: _usernameController.text,
+      bio: _bioController.text,
       file: _image!,
     );
     if (res != 'success') {
@@ -102,25 +102,25 @@ class _SignupScreenState extends State<SignupScreen> {
             TextFieldInput(
               hintText: 'Enter your username',
               textInputType: TextInputType.text,
-              textEditingController: usernameController,
+              textEditingController: _usernameController,
             ),
             const SizedBox(height: 12),
             TextFieldInput(
                 hintText: 'Enter your email',
                 textInputType: TextInputType.text,
-                textEditingController: emailController),
+                textEditingController: _emailController),
             const SizedBox(height: 12),
             TextFieldInput(
               hintText: 'Enter your Password',
               textInputType: TextInputType.text,
-              textEditingController: passwordController,
+              textEditingController: _passwordController,
               isPass: true,
             ),
             const SizedBox(height: 12),
             TextFieldInput(
               hintText: 'Enter your bio',
               textInputType: TextInputType.text,
-              textEditingController: bioController,
+              textEditingController: _bioController,
             ),
             const SizedBox(height: 22),
             InkWell(
