@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:friendszone_app/resources/auth_methods.dart';
+import 'package:friendszone_app/screens/signup_screen.dart';
 import 'package:friendszone_app/utils/colors.dart';
 import 'package:friendszone_app/utils/utils.dart';
 import 'package:friendszone_app/widgets/text_field_input.dart';
@@ -34,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
       password: _passwordController.text);
 
       if(res == "success"){
-    
+
       } else{
         
         showSnackBar(res, context);
@@ -42,8 +43,15 @@ class _LoginScreenState extends State<LoginScreen> {
       setState(() {
       _isLoading = false;
     });
-       
   }
+
+void NavigateToSignup() {
+  Navigator.of(context).push(
+    MaterialPageRoute(
+      builder: (context) => const SignupScreen(),
+    ),
+  );
+}
 
   @override
   Widget build(BuildContext context) {
@@ -98,9 +106,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: NavigateToSignup,
                   child: Container(
-                    child: Text(" Sign up", style: TextStyle(
+                    child: const Text("Sign Up", style: TextStyle(
                       fontWeight: FontWeight.bold
                     ),),
                     padding: const EdgeInsets.symmetric(

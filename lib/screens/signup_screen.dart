@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:friendszone_app/resources/auth_methods.dart';
+import 'package:friendszone_app/screens/login_screen.dart';
 import 'package:friendszone_app/utils/colors.dart';
 import 'package:friendszone_app/utils/utils.dart';
 import 'package:friendszone_app/widgets/text_field_input.dart';
@@ -59,6 +60,14 @@ class _SignupScreenState extends State<SignupScreen> {
       _isLoading = true;
     });
   }
+
+void NavigateToLogin() {
+  Navigator.of(context).push(
+    MaterialPageRoute(
+      builder: (context) => const LoginScreen(),
+    ),
+  );
+}
 
   @override
   Widget build(BuildContext context) {
@@ -152,10 +161,10 @@ class _SignupScreenState extends State<SignupScreen> {
                   padding: const EdgeInsets.symmetric(vertical: 8),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: NavigateToLogin,
                   child: Container(
                     child: Text(
-                      " Sign up",
+                      "Login.",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     padding: const EdgeInsets.symmetric(vertical: 8),
