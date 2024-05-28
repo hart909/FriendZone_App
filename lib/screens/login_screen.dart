@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:friendszone_app/resources/auth_methods.dart';
+import 'package:friendszone_app/responsive/mobile_screen_layout.dart';
+import 'package:friendszone_app/responsive/responsive_layout_screen.dart';
+import 'package:friendszone_app/responsive/web_screen_layout.dart';
 import 'package:friendszone_app/screens/signup_screen.dart';
 import 'package:friendszone_app/utils/colors.dart';
 import 'package:friendszone_app/utils/utils.dart';
@@ -35,7 +38,14 @@ class _LoginScreenState extends State<LoginScreen> {
       password: _passwordController.text);
 
       if(res == "success"){
-
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) => const ResponsiveLayout(
+              mobileScreenLayout: MobileScreenLayout(),
+              webScreenLayout: WebScreenLayout(),
+            ),
+          ),
+        );
       } else{
         
         showSnackBar(res, context);

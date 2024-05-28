@@ -5,6 +5,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:friendszone_app/resources/auth_methods.dart';
+import 'package:friendszone_app/responsive/mobile_screen_layout.dart';
+import 'package:friendszone_app/responsive/responsive_layout_screen.dart';
+import 'package:friendszone_app/responsive/web_screen_layout.dart';
 import 'package:friendszone_app/screens/login_screen.dart';
 import 'package:friendszone_app/utils/colors.dart';
 import 'package:friendszone_app/utils/utils.dart';
@@ -53,12 +56,23 @@ class _SignupScreenState extends State<SignupScreen> {
       bio: _bioController.text,
       file: _image!,
     );
+
+    setState(() {
+      _isLoading = false;
+    });
+
     if (res != 'success') {
       showSnackBar(res, context);
+    } else {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => const ResponsiveLayout(
+            mobileScreenLayout: MobileScreenLayout(),
+            webScreenLayout: WebScreenLayout(),
+          ),
+        ),
+      );
     }
-    setState(() {
-      _isLoading = true;
-    });
   }
 
 void NavigateToLogin() {
