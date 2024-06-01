@@ -38,8 +38,8 @@ class User {
       email: snapshot['email'],
       photoUrl: snapshot['photoUrl'],
       bio: snapshot['bio'],
-      followers: snapshot['followers'],
-      following: snapshot['following'],
+      followers: List<String>.from(snapshot['followers']),
+      following: List<String>.from(snapshot['following']),
     );
   }
 }
