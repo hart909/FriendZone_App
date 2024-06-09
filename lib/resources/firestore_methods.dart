@@ -57,7 +57,8 @@ class FirestoreMethods {
     } catch (e) {
       print(
         e.toString(),
-      );
+        );
+      }
     }
 
     Future<void> postComment(String postId, String text, String uid,
@@ -85,5 +86,5 @@ class FirestoreMethods {
         }
 
   void postComment(snap, snap2, String uid, String username, String photoUrl) {}
-}
+
 
