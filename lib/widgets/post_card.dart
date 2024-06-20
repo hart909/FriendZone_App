@@ -120,7 +120,9 @@ class _PostCardState extends State<PostCard> {
           GestureDetector(
             onDoubleTap: () async {
               FirestoreMethods().likePost(
-                  widget.snap['postId'], user.uid, widget.snap['likes']);
+                  widget.snap['postId'],
+                  user.uid,
+                  widget.snap['likes']);
               setState(() {
                 isLikeAnimating = true;
               });
