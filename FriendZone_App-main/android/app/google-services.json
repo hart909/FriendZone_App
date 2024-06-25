@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "174195883234",
+    "project_id": "friendzone-ad189",
+    "storage_bucket": "friendzone-ad189.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:174195883234:android:b730622a7cdc91c0ef32bb",
+        "android_client_info": {
+          "package_name": "com.example.friendszone_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvPRdWBHTyKF-SdOPanwrsEfAUvXG_7gs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
